@@ -1,13 +1,16 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const cp = require('child_process')
 const app = express()
-const cp
+
+const input = "TEST\n"
 
 /**
  * #####################EXPRESS MODULES#####################
  */
 app.use(bodyParser.urlencoded({extended: true}))
-app.set('view engine', 'ejs')
+app.set('view engine', 'ejs');
+//cp.spawn("echo > /tmp/myfifo", [input], {"shell":true})
 
 /**
  * #####################API CALLS###########################
