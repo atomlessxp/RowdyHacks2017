@@ -11,6 +11,7 @@ const app = express()
  */
 app.use(bodyParser.urlencoded({extended: true}))
 app.set('view engine', 'ejs');
+app.use(express.static(__dirname + "/public"));
 
 //cp.spawn("echo > /tmp/myfifo", [input], {"shell":true})
 
@@ -24,7 +25,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/convert', (req, res) => {
-    console.log(req.body)
+    console.log(req.body.passwd)
     cp.spawn("echo > /tmp/myfifo", [req.body.passwd], {"shell":true})
     res.send()
 })
