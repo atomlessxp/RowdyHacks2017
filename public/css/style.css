@@ -1,0 +1,17 @@
+body {
+    background-image: url("../images/terminal.png");
+    font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+}
+
+#titlePage h1 {
+    text-align: center;
+    color: #36DD83;
+}
+
+#titlePage small {
+    color: #36DD83;
+}
+
+#main {
+    padding-top: 30px;
+}
