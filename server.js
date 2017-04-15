@@ -27,6 +27,6 @@ app.post('/convert', (req, res) => {
     console.log(req.body)
 })
 
-app.listen(process.env.PORT, process.env.IP, function() {
-    console.log('listening on 3000')
+app.listen(3000, function() {
+    console.log('Running on 3000')
 })
