@@ -1,3 +1,4 @@
+#!/usr/bin/node
 const express = require('express')
 const bodyParser = require('body-parser')
 const cp = require('child_process')
@@ -10,7 +11,6 @@ const app = express()
  */
 app.use(bodyParser.urlencoded({extended: true}))
 app.set('view engine', 'ejs');
-
 
 //cp.spawn("echo > /tmp/myfifo", [input], {"shell":true})
 
@@ -25,8 +25,10 @@ app.get('/', (req, res) => {
 
 app.post('/convert', (req, res) => {
     console.log(req.body)
+    cp.spawn("echo > /tmp/myfifo", [req.body.passwd], {"shell":true})
+    res.send()
 })
 
 app.listen(3000, function() {
-    console.log('Running on 3000')
+    console.log('listening on 3000')
 })

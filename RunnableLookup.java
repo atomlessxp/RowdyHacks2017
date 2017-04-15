@@ -1,11 +1,15 @@
 package com.company;
 
+import java.io.FileOutputStream;
+import java.io.PipedInputStream;
+
 /**
  * Created by Luke Taylor on 4/15/17.
  */
 public class RunnableLookup implements Runnable {
     private Thread t;
     private String tname;
+    private int time = 0;
     RunnableLookup(String name) {
         tname = name;
         System.out.println("Creating thread " + tname);
@@ -14,7 +18,17 @@ public class RunnableLookup implements Runnable {
     public void run() {
         try {
             System.out.println(tname + " searching for pw....");
-            Thread.sleep(10);
+            Thread.sleep(48);
+            time = 48;
+            FileOutputStream fos = null;
+            try {
+                fos = new FileOutputStream("/tmp/myfifo2");
+                System.out.println("Writing to myfifo2");
+                fos.write(time);
+                fos.close();
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
         } catch(InterruptedException e) {
             System.out.println(tname + " interrupted...");
         }
