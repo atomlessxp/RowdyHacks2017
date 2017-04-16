@@ -16,23 +16,24 @@ public class RunnableLookup implements Runnable {
     }
 
     public void run() {
-        try {
+        //try {
             System.out.println(tname + " searching for pw....");
-            time = 5000;
-            Thread.sleep(time);
+            time = 0;
+            Main m = new Main(tname);
+            String s = m.toString();
             FileOutputStream fos = null;
             try {
                 fos = new FileOutputStream("/tmp/myfifo2");
                 System.out.println("Writing to myfifo2");
-                String s="{\"time\": " + time + ", \"cost\": " + tname.length() + " }";
+                //String s="{\"time\": " + time + ", \"cost\": " + tname.length() + " }";
                 fos.write(s.getBytes());
                 fos.close();
             } catch(Exception e) {
                 e.printStackTrace();
             }
-        } catch(InterruptedException e) {
-            System.out.println(tname + " interrupted...");
-        }
+        //} /catch(Exception e) {
+        //    System.out.println(tname + " interrupted...");
+        //}
         System.out.println(tname + " found pw val");
     }
 

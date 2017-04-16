@@ -1,3 +1,4 @@
+package com.company;
 /**
  * Created by culv3r on 4/15/17.
  */
@@ -36,16 +37,17 @@ public class Main {
     // jdbc Connection
     private static Connection conn = null;
     private static Statement stmt = null;
+    private String password;
+    private String str;
 
 
 
-    public static void main(String args[]) {
+    public Main(String password) {
         createConnection();
-        String password = "";
-        Scanner in = null;
         String unit = "";
         String aUnit = "";
         Set<Integer> keys = null;
+        Scanner in = null;
         coreCost = new HashMap<Integer, Double>();
         ArrayList<String> units = new ArrayList<String>();
         units.add("Seconds");
@@ -56,8 +58,8 @@ public class Main {
         units.add("Decades");
         units.add("Centuries");
         try {
-            in = new Scanner(new File("passwords.txt"));
-        } catch (FileNotFoundException e) {
+            in = new Scanner(password);
+        } catch (Exception e) {
             e.printStackTrace();
         }
         coreCost.put(1, 0.0136);
@@ -100,27 +102,27 @@ public class Main {
 
                 }
             }
-                double costSingle = ((hackGus/60)/60)*coreCost.get(1);
-                double timeEight = 0;
-                String unitEight = "";
-                double timeTSix = 0;
-                String unitTSix = "";
-                double timeFull = 0;
-                String unitFull = "";
-                double gusCostEight = 0;
-                double gusCostTSix = 0;
-                double gusCostFull = 0;
-                double gusEight = (hackGus/GUS_EIGHT)/2;
-                gusCostEight = ((hackGus/60)/60)*coreCost.get(8);
-                double gusTSix = (hackGus/GUS_TSIX)/2;
-                gusCostTSix = ((hackGus/60)/60)*coreCost.get(36);
-                double gusFull = (hackGus/GUS_FULL)/2;
-                gusCostFull = ((hackGus/60)/60)*coreCost.get(64);
-                ArrayList<Double> gList = new ArrayList<>();
-                gList.add(gusEight);
-                gList.add(gusTSix);
-                gList.add(gusFull);
-                for (int m = 0; m< gList.size(); m++) {
+            double costSingle = ((hackGus/60)/60)*coreCost.get(1);
+            double timeEight = 0;
+            String unitEight = "";
+            double timeTSix = 0;
+            String unitTSix = "";
+            double timeFull = 0;
+            String unitFull = "";
+            double gusCostEight = 0;
+            double gusCostTSix = 0;
+            double gusCostFull = 0;
+            double gusEight = (hackGus/GUS_EIGHT)/2;
+            gusCostEight = ((hackGus/60)/60)*coreCost.get(8);
+            double gusTSix = (hackGus/GUS_TSIX)/2;
+            gusCostTSix = ((hackGus/60)/60)*coreCost.get(36);
+            double gusFull = (hackGus/GUS_FULL)/2;
+            gusCostFull = ((hackGus/60)/60)*coreCost.get(64);
+            ArrayList<Double> gList = new ArrayList<>();
+            gList.add(gusEight);
+            gList.add(gusTSix);
+            gList.add(gusFull);
+            for (int m = 0; m< gList.size(); m++) {
                 int l = 0;
                 double dWork = gList.get(m);
                 for (l = 0; l < units.size(); l++) {
@@ -153,9 +155,10 @@ public class Main {
             DecimalFormat newFormat = new DecimalFormat("#.##");
             double avgRes = Double.valueOf(newFormat.format(dList.get(1)));
             double result = Double.valueOf(newFormat.format(dList.get(0)));
-            String resArr = dictResult + ";" + avgRes + ";" + aUnit + ";" + result + ";" + unit + ";" + costSingle + ";" + timeEight + ";" + unitEight + ";" + gusCostEight + ";" +
-                    timeTSix + ";" + unitTSix + ";" + gusCostTSix + ";" + timeFull + ";" + unitFull + ";" + gusCostFull;
-            System.out.println(resArr);
+            str = "{ dictResult: " + dictResult + ", avgRes: " + avgRes + /*", aUnit: " + aUnit + */", result: " + result + /*", unit: " + unit + */", costSingle: " +
+                    costSingle + ", timeEight: " + timeEight + /*", unitEight: " + unitEight + */ ", gusCostEight: " + gusCostEight + ", timeTSix: " +
+                    timeTSix + /*", unitTSix: " + unitTSix + */", gusCostTSix: " + gusCostTSix + ", timeFull: " + timeFull + /*",unitFull: " +
+                    unitFull +*/ ", gusCostFull: " + gusCostFull + "}";
         }
 
         shutdown();
@@ -267,4 +270,7 @@ public class Main {
         return dNum;
     }
 
+    public String toString() {
+        return str;
+    }
 }
