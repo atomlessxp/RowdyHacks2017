@@ -1,5 +1,6 @@
 body {
     background-image: url("../images/terminal.png");
+    background-size: cover;
     font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
 }
 
@@ -14,4 +15,30 @@ body {
 
 #main {
     padding-top: 30px;
+}
+
+i {
+    color: #36DD83 !important;
+}
+
+button {
+    color: #36DD83 !important;
+    background-color: transparent !important;
+    border: 3px solid !important;
+    border-color: #36DD83 !important;
+}
+
+button:hover {
+    color: #fff !important;
+    background-color: #36DD83 !important;
+}
+
+input {
+    color: #36DD83 !important;
+    outline: none !important;
+    width: 100% !important;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #36DD83 !important;
 }
