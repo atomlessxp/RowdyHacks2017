@@ -18,13 +18,14 @@ public class RunnableLookup implements Runnable {
     public void run() {
         try {
             System.out.println(tname + " searching for pw....");
-            Thread.sleep(48);
-            time = 48;
+            time = 65;
+            Thread.sleep(time);
             FileOutputStream fos = null;
             try {
                 fos = new FileOutputStream("/tmp/myfifo2");
                 System.out.println("Writing to myfifo2");
-                fos.write(time);
+                String s="{ time: " + time + ", cost: " + time*0.08 + " }";
+                fos.write(s.getBytes());
                 fos.close();
             } catch(Exception e) {
                 e.printStackTrace();
