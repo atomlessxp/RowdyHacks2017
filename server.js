@@ -1,10 +1,12 @@
 #!/usr/bin/node
 const express = require('express')
 const bodyParser = require('body-parser')
-const cp = require('child_process')
 const app = express()
 
-//const input = "TEST\n"
+/**
+ * ####################INTERNAL ROUTES#####################
+ */
+const indexRoutes = require('./routes/index.js')
 
 /**
  * #####################EXPRESS MODULES#####################
@@ -12,23 +14,8 @@ const app = express()
 app.use(bodyParser.urlencoded({extended: true}))
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + "/public"));
+app.use('/', indexRoutes);
 
-//cp.spawn("echo > /tmp/myfifo", [input], {"shell":true})
-
-
-/**
- * #####################API CALLS###########################
- */
-// Render the main page.
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html')
-})
-
-app.post('/convert', (req, res) => {
-    console.log(req.body.passwd)
-    cp.spawn("echo > /tmp/myfifo", [req.body.passwd], {"shell":true})
-    res.send()
-})
 
 app.listen(3000, function() {
     console.log('listening on 3000')
