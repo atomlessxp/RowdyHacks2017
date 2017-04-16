@@ -1,6 +1,7 @@
 #!/usr/bin/node
 const express = require('express')
 const bodyParser = require('body-parser')
+const fs = require('fs')
 const app = express()
 
 /**
@@ -17,5 +18,6 @@ app.use(express.static(__dirname + "/public"));
 app.use('/', indexRoutes);
 
 app.listen(3000, function() {
+    var s2 = fs.createWriteStream("/tmp/myfifo2");
     console.log('listening on 3000')
 })
