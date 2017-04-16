@@ -37,10 +37,11 @@
   <div class="row">
    <h4 id="header">
     <p>
-    Time: <span id="time"></span><br />
-    </p>
-    <p>
-    Cost: <span id="cost"></span><br />
+    Cost on 1 CPU:  <span id="costSingle"></span><br />
+    Cost on 8 CPUs: <span id="gusCostEight"></span><br />
+    Cost on 36 CPUs:<span id="gusCostTSix"></span><br />
+    Cost on 64 CPUs:<span id="gusCostFull"></span><br />
+    <span id="dict"></span><br />
     </p>
    </h4>
   </div>
@@ -50,8 +51,17 @@
 <script>
     var res = <%= result %>;
     if(typeof res != 'undefined') {
-        document.getElementById("time").innerHTML=res.time;
-        document.getElementById("cost").innerHTML=res.cost;
+        document.getElementById("costSingle").innerHTML="$" + res.costSingle;
+        document.getElementById("gusCostEight").innerHTML="$" + res.gusCostEight;
+        document.getElementById("gusCostTSix").innerHTML="$" + res.gusCostTSix;
+        document.getElementById("gusCostFull").innerHTML="$" + res.gusCostFull;
+        
+        if(res.dictResult == 1) {
+            document.getElementById("dict").innerHTML="Found dictionary result";
+        } else {
+            document.getElementById("dict").innerHTML="Did not find dictionary result";
+        }
+            
     } else {
         document.getElementById("header").innerHTML="Error: No results yet.";
     }
