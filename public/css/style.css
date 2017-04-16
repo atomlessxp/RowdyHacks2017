@@ -17,18 +17,30 @@ body {
     padding-top: 30px;
 }
 
+#main h4 {
+    color: #36DD83 !important;
+}
+
+#navigation h5 {
+    color: #36DD83 !important;
+}
+
+#navigation a {
+    color: inherit;
+}
+
 i {
     color: #36DD83 !important;
 }
 
-button {
+.btn {
     color: #36DD83 !important;
     background-color: transparent !important;
     border: 3px solid !important;
     border-color: #36DD83 !important;
 }
 
-button:hover {
+.btn:hover {
     color: #fff !important;
     background-color: #36DD83 !important;
 }

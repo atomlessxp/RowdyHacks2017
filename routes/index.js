@@ -12,4 +12,8 @@ router.post('/', (req, res) => {
     res.redirect('/')
 })
 
+router.get('/results', (req, res) => {
+    res.render("results.ejs")
+})
+
 module.exports = router;
