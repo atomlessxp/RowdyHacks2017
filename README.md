@@ -13,3 +13,5 @@ Download NodeJS from, https://nodejs.org/en/ , and install for your operating sy
 > npm install // Install necessary modules for express.
 
 > node server.js // Runs the server
+
+Visit localhost:3000 for website.
